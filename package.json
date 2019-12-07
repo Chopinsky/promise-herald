@@ -1,6 +1,6 @@
 {
   "name": "promise-herald",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A nimble package to dispatch resolved or rejected promise to subscribers",
   "main": "src/index.js",
   "scripts": {
