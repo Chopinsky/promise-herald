@@ -1,10 +1,11 @@
 {
   "name": "promise-herald",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A nimble package to dispatch resolved or rejected promise to subscribers",
   "main": "src/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Chopinsky/promise-herald/issues"
   },
-  "homepage": "https://github.com/Chopinsky/promise-herald#readme"
+  "homepage": "https://github.com/Chopinsky/promise-herald#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
 }

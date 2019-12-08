@@ -4,13 +4,13 @@ let runtime = null;
 const newSubscriberEvent = "newSubscriber";
 const dataRecvEvent = "promiseDataReceived";
 
-const createRuntime = function (inNode) {
+const createRuntime = function (nodejsMode) {
   let emitter;
 
-  if (inNode) {
+  if (nodejsMode) {
     if (typeof require !== "function") {
       throw new Error(
-        "The package only support executions in a bowser based JavaScript runtime ... "
+        "The package only supports a bowser or NodeJS based JavaScript runtime ... "
       );
     }
 
@@ -20,17 +20,17 @@ const createRuntime = function (inNode) {
 
   runtime = {
     subscribe: function (event, listener, once) {
-      if (!inNode) {
-        window.addEventListener(event, listener, { once });
-      } else {
+      if (nodejsMode) {
         once ? emitter.once(event, listener) : emitter.on(event, listener);
+      } else {
+        window.addEventListener(event, listener, { once });
       }
     },
     dispatch: function (event) {
-      if (!inNode) {
-        window.dispatchEvent(new Event(event));
-      } else {
+      if (nodejsMode) {
         emitter.emit(event);
+      } else {
+        window.dispatchEvent(new Event(event));
       }
     }
   };
